@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A responsive product catalogue using JavaScript and a public REST API.">
+  <title>ShopLite | Product Explorer</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" type="module"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="ShopLite home"><span class="brand-mark">S</span> ShopLite</a>
+    <p class="tagline">Explore products. Find your next favourite.</p>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">PRODUCT EXPLORER</p>
+      <h1>Find something <span>you’ll love.</span></h1>
+      <p class="hero-copy">Browse products loaded live from a public REST API. Search, filter, and sort without reloading the page.</p>
+    </section>
+
+    <section class="toolbar" aria-label="Product controls">
+      <label class="search-wrap">
+        <span class="sr-only">Search products</span>
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input id="searchInput" type="search" placeholder="Search products…" autocomplete="off">
+      </label>
+      <label class="control-label" for="categorySelect">Category
+        <select id="categorySelect">
+          <option value="all">All categories</option>
+        </select>
+      </label>
+      <label class="control-label" for="sortSelect">Sort by
+        <select id="sortSelect">
+          <option value="featured">Featured</option>
+          <option value="price-low">Price: low to high</option>
+          <option value="price-high">Price: high to low</option>
+          <option value="rating">Top rated</option>
+          <option value="name">Name: A to Z</option>
+        </select>
+      </label>
+    </section>
+
+    <div class="results-line">
+      <p id="resultsCount" aria-live="polite">Loading products…</p>
+      <button id="resetButton" class="text-button" type="button">Reset filters</button>
+    </div>
+
+    <div id="errorBanner" class="error-banner" role="alert" hidden>
+      <div><strong>We couldn’t load the products.</strong><p id="errorMessage">Please check your connection and try again.</p></div>
+      <button id="retryButton" type="button" class="retry-button">Try again</button>
+    </div>
+
+    <section id="loadingState" class="product-grid" aria-label="Loading products">
+      <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+      <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+    </section>
+
+    <section id="productGrid" class="product-grid" aria-label="Products" hidden></section>
+
+    <section id="emptyState" class="empty-state" hidden>
+      <div class="empty-icon">⌕</div>
+      <h2>No products found</h2>
+      <p>Try another search term or clear your filters.</p>
+      <button id="emptyResetButton" class="primary-button" type="button">Clear filters</button>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built with HTML, CSS, JavaScript ES6+ and the FakeStore API.</p>
+    <p>Product data is provided by <a href="https://fakestoreapi.com/" target="_blank" rel="noreferrer">FakeStore API</a>.</p>
+  </footer>
+</body>
+</html>
